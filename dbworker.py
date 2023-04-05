@@ -59,4 +59,5 @@ def set_state(user_id, state_val):
             cursor.close()
             connection.close()
             return True
+#test
 
