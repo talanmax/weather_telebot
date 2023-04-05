@@ -1,7 +1,6 @@
 import telebot
 import config
 import dbworker
-import weather
 
 bot = telebot.TeleBot(config.token)
 
@@ -10,14 +9,15 @@ bot = telebot.TeleBot(config.token)
 def cmd_start(message):
     state = dbworker.get_current_state(message.chat.id)
     if state == config.States.S_ENTER_NAME.value:
-        bot.send_message(message.chat.id, "Здається, хтось обіцяв відправити своє ім'я, але так і не зробив цього: (Чекаю...")
-    elif state == config.States.S_ENTER_AGE.value:
-        bot.send_message(message.chat.id, "Здається, хтось обіцяв відправити свій вік, але так і не зробив цього: (Чекаю...")
-    elif state == config.States.S_SEND_CITY.value:
-        bot.send_message(message.chat.id, "Здається, хтось обіцяв відправити картинку, але так і не зробив цього: (Чекаю...")
-    else:
-        bot.send_message(message.chat.id, "Вітання! Як я можу до тебе звертатись?")
-        dbworker.set_state(message.chat.id, config.States.S_ENTER_NAME.value)
+        bot.send_message(message.chat.id,"Привіт як тебе звати?")
+    elif state == config.States.S_ENTER_CITY.value:
+        bot.send_message(message.chat.id, "Укажіть своє місто")
+    elif state == config.States.S_SEND_WEATHER_DAY.value:
+        bot.send_message(message.chat.id, "Укажіть скільки потрібно вам днів погоди")
+
+
+
+
 
 
 @bot.message_handler(commands=["reset"])
