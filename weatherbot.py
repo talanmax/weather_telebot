@@ -7,7 +7,6 @@ text = 0
 text_old = 0
 city_ = 0
 answer = 0
-bot = telebot.TeleBot("5914199920:AAEpnKjGl3xc6UG7k--3enzscBQOTXVjp0Q")
 def weather(city):
     global city_, html, temp, text_old, text, t_max, t_min, first_day, second_day, third_day, fourth_day, fifth_day, sixth_day
     global seventh_day, first_temperature, second_temperature, third_temperature, fourth_temperature, fifth_temperature
