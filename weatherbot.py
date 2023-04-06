@@ -7,6 +7,7 @@ text = 0
 text_old = 0
 city_ = 0
 answer = 0
+bot = telebot.TeleBot("5914199920:AAEpnKjGl3xc6UG7k--3enzscBQOTXVjp0Q")
 def weather(city):
     global city_, html, temp, text_old, text, t_max, t_min, first_day, second_day, third_day, fourth_day, fifth_day, sixth_day
     global seventh_day, first_temperature, second_temperature, third_temperature, fourth_temperature, fifth_temperature
@@ -81,6 +82,91 @@ def get_text_messages(message):
             rez = ' '
             city_old = " "
             answer = 0
+        elif tt == 2:
+            e = weather(rez)
+            if e == 0 or text == 0:
+                bot.send_message(message.chat.id, "Ви ввели неправильну назву міста(")
+            else:
+                try:
+                    temp = str(temp)
+                    bot.send_message(message.chat.id, f'Привіт погода {city_} на сім днів:\n{first_day}:\n{first_temperature}\nНа вулиці буде {first_weather}\n'
+                                                      f'{second_day}:\n{second_temperature}\nНа вулиці буде {second_weather}\n')
+                except Exception as ex:
+                    bot.send_message(message.chat.id, "Ви ввели неправильну назву міста(")
+                    print(1)
+                    print(ex)
+                text_old = text
+                text = 0
+        elif tt == 3:
+            e = weather(rez)
+            if e == 0 or text == 0:
+                bot.send_message(message.chat.id, "Ви ввели неправильну назву міста(")
+            else:
+                try:
+                    temp = str(temp)
+                    bot.send_message(message.chat.id, f'Привіт погода {city_} на сім днів:\n{first_day}:\n{first_temperature}\nНа вулиці буде {first_weather}\n'
+                                                      f'{second_day}:\n{second_temperature}\nНа вулиці буде {second_weather}\n'
+                                                      f'{third_day}:\n{third_temperature}\nНа вулиці буде {third_weather}\n')
+                except Exception as ex:
+                    bot.send_message(message.chat.id, "Ви ввели неправильну назву міста(")
+                    print(1)
+                    print(ex)
+                text_old = text
+                text = 0
+        elif tt == 4:
+            e = weather(rez)
+            if e == 0 or text == 0:
+                bot.send_message(message.chat.id, "Ви ввели неправильну назву міста(")
+            else:
+                try:
+                    temp = str(temp)
+                    bot.send_message(message.chat.id, f'Привіт погода {city_} на сім днів:\n{first_day}:\n{first_temperature}\nНа вулиці буде {first_weather}\n'
+                                                      f'{second_day}:\n{second_temperature}\nНа вулиці буде {second_weather}\n'
+                                                      f'{third_day}:\n{third_temperature}\nНа вулиці буде {third_weather}\n'
+                                                      f'{fourth_day}:\n{fourth_temperature}\nНа вулиці буде {fourth_weather}\n')
+                except Exception as ex:
+                    bot.send_message(message.chat.id, "Ви ввели неправильну назву міста(")
+                    print(1)
+                    print(ex)
+                text_old = text
+                text = 0
+        elif tt == 5:
+            e = weather(rez)
+            if e == 0 or text == 0:
+                bot.send_message(message.chat.id, "Ви ввели неправильну назву міста(")
+            else:
+                try:
+                    temp = str(temp)
+                    bot.send_message(message.chat.id, f'Привіт погода {city_} на сім днів:\n{first_day}:\n{first_temperature}\nНа вулиці буде {first_weather}\n'
+                                                      f'{second_day}:\n{second_temperature}\nНа вулиці буде {second_weather}\n'
+                                                      f'{third_day}:\n{third_temperature}\nНа вулиці буде {third_weather}\n'
+                                                      f'{fourth_day}:\n{fourth_temperature}\nНа вулиці буде {fourth_weather}\n'
+                                                      f'{fifth_day}:\n{fifth_temperature}\nНа вулиці буде {fifth_weather}\n')
+                except Exception as ex:
+                    bot.send_message(message.chat.id, "Ви ввели неправильну назву міста(")
+                    print(1)
+                    print(ex)
+                text_old = text
+                text = 0
+        elif tt == 6:
+            e = weather(rez)
+            if e == 0 or text == 0:
+                bot.send_message(message.chat.id, "Ви ввели неправильну назву міста(")
+            else:
+                try:
+                    temp = str(temp)
+                    bot.send_message(message.chat.id, f'Привіт погода {city_} на сім днів:\n{first_day}:\n{first_temperature}\nНа вулиці буде {first_weather}\n'
+                                                      f'{second_day}:\n{second_temperature}\nНа вулиці буде {second_weather}\n'
+                                                      f'{third_day}:\n{third_temperature}\nНа вулиці буде {third_weather}\n'
+                                                      f'{fourth_day}:\n{fourth_temperature}\nНа вулиці буде {fourth_weather}\n'
+                                                      f'{fifth_day}:\n{fifth_temperature}\nНа вулиці буде {fifth_weather}\n'
+                                                      f'{sixth_day}:\n{sixth_temperature}\nНа вулиці буде {sixth_weather}\n')
+                except Exception as ex:
+                    bot.send_message(message.chat.id, "Ви ввели неправильну назву міста(")
+                    print(1)
+                    print(ex)
+                text_old = text
+                text = 0
         elif tt == 7:
             e = weather(rez)
             if e == 0 or text == 0:
@@ -108,8 +194,8 @@ def get_text_messages(message):
     elif rezz == 1 and message != '/weather' and message != '/start':
         rez = message.text
         rez = rez.lower()
-        bot.send_message(message.chat.id, 'В наступному повідомленні вкажіть кількість днів на які ви хочете отримати погоду(1 або 7),'
-                                          'в повідомленні повинна бути тільки цифра. Якщо ви введете 1 то отримаєте погоду на сьгодні.')
+        bot.send_message(message.chat.id, 'В наступному повідомленні вкажіть кількість днів на які ви хочете отримати погоду(1 до 7),'
+                                          'в повідомленні повинна бути тільки цифра.')
         answer = 1
         rezz = 0
     elif message.text == "/weather" or message.text == "/start":
