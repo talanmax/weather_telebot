@@ -7,6 +7,3 @@ class States(Enum):
     S_ENTER_NAME = "1"
     S_ENTER_CITY = "2"
     S_SEND_WEATHER_DAY = "3"
-
-
-
