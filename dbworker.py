@@ -60,7 +60,7 @@ def set_state(user_id, state_val):
             connection.close()
             return  True
 
-def set_info(user_id, user_msg, date, state_val):
+def set_info(user_id, user_msg, state_val):
     try:
         connection = psycopg2.connect(user="postgres",
                                               password="12345678",
@@ -91,7 +91,7 @@ def set_info(user_id, user_msg, date, state_val):
             connection.close()
             return  True
 
-def get_current_info(user_id):
+def get_current_info(user_id, status, limit = 1):
     try:
         connection = psycopg2.connect(user="postgres",
                                               password="12345678",
@@ -99,9 +99,11 @@ def get_current_info(user_id):
                                               port="5432",
                                               database="postgres")
         cursor = connection.cursor()
-        some_articul = f'''SELECT status_client_dilog 
-        FROM weather_user_info
-        WHERE user_id = '{user_id}'
+        some_articul = f'''
+        SELECT text_msg FROM public.weather_user_info
+        WHERE status = '{status}'
+        ORDER BY date_msg DESC 
+        LIMIT {limit}
         ;'''
         cursor.execute(some_articul)
         records = cursor.fetchone()
@@ -117,4 +119,6 @@ def get_current_info(user_id):
             else:
                 return config.States.S_START.value
 
-set_info("985773281","xave nota name", datetime.date.today().strftime("%d-%m-%Y"),"3")
+set_info("985773281","xave nota name","3")
+
+print(get_current_info(985773281, 3))
