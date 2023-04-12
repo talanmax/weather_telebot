@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup as bs
 def weather(city):
+    city = city.lower()
     r = requests.get(f'https://ua.sinoptik.ua/погода-{city}')
     html = bs(r.content, 'lxml')
     for el in html.select('#content'):
